@@ -117,3 +117,18 @@
 5. 데이터 분석 도구(Excel · Python · R · SQL 등) 사용 경험
 6. `examples/TARO_01~04` 원본 (문서 형식 대조용) · 기존 `DESIGN.md` 원본이 따로 있었는지
 7. 배포 주소 (og:image 절대 경로용)
+
+---
+
+## 배포 검수 (2026-11-26, Vercel)
+
+| # | 점검 | 결과 |
+|---|---|---|
+| 1 | 배포 주소 | ✓ https://portfolio-red-kappa-kn8fghmwnr.vercel.app (Vercel 프로젝트 `portfolio`, GitHub `juneha03/portfolio` main과 Git 연결 · 푸시마다 자동 배포) |
+| 2 | Framework · 빌드 | ✓ Other(빌드 명령 없음, 정적 파일 그대로) |
+| 3 | 공개 접근 | ✓ 로그인 보호(Vercel Authentication) · 비밀번호 보호 꺼짐 |
+| 4 | og:image · twitter:image · JSON-LD image | ✗ 상대 경로 → **배포 주소 절대 경로로 교체** ✓ (`og:url`, JSON-LD `url` 추가) |
+| 5 | 로더가 글꼴 로드 실패 시 멈춤 | ✗ → **실패해도 넘어가도록 `.catch` 추가** ✓ (타이밍 값 그대로) |
+| 6 | 하늘 텍스처 `images/milky8.webp` | △ 파일이 없어 참조를 뺌 → 배경은 원래 지정색 `#040a2a`. 파일을 받으면 다시 연결 |
+| 7 | 콘솔 오류 · 375px 가로 넘침 · 메뉴 6개 이동/활성 표시 | ✓ (로컬 브라우저, 외부 글꼴은 차단한 상태) |
+| 8 | 글꼴 · 배경 사운드가 레퍼런스 사이트 주소 | △ 그대로 — 본인 결정 대기 |
